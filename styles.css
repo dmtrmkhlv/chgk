@@ -13,6 +13,8 @@ body {
     background: #0e1433;
     flex-direction: column;
     font-family: Arial, sans-serif;
+	user-select: none;
+	   cursor: url('gold-dot.svg'), auto; /* Укажите путь к вашему SVG-файлу */
 }
 
 .container {
@@ -31,6 +33,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+	    position: relative;
 }
 
 .cube {
@@ -69,6 +72,33 @@ body {
     /* Учитываем обводку в размерах */
 }
 
+        .controls {
+    position: absolute;
+    bottom: -120px;
+    width: 100%;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+        }
+
+        .controls button {
+
+margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+    /* cursor: pointer; */
+	   cursor: url('gold-dot.svg'), auto; /* Укажите путь к вашему SVG-файлу */
+    opacity: .05;
+    height: 10vh;
+    background: #0e1433;
+
+        }
+
+       .controls button:hover {
+            /* cursor: url('gold-dot-large.svg'), auto; /* Большая золотая точка */ */
+        }
 
 
 /* Левый кубик (Знатоки) */
