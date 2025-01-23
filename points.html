@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Счёт для игры Что? Где? Когда?</title>
     <meta name="author" content="Дмитрий Михайлов">
     <meta name="description" content="Счёт для игры: Что? Где? Когда?">
@@ -39,9 +37,8 @@
                 <div class="face bottom">0</div>
             </div>
             <div class="controls">
-			                <button onclick="changeScore(1, -1)">-</button>
+                <button onclick="changeScore(1, -1)">-</button>
                 <button onclick="changeScore(1, 1)">+</button>
-
             </div>
         </div>
 
@@ -57,14 +54,19 @@
                 <div class="face bottom">0</div>
             </div>
             <div class="controls">
-			                <button onclick="changeScore(2, -1)">-</button>
+                <button onclick="changeScore(2, -1)">-</button>
                 <button onclick="changeScore(2, 1)">+</button>
-
             </div>
         </div>
     </div>
 
     <script>
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+
         let currentScore1 = 0; // Текущее значение левого кубика
         let currentScore2 = 0; // Текущее значение правого кубика
 
@@ -141,27 +143,25 @@
             localStorage.setItem('score', JSON.stringify(scores));
             updateCubes(scores);
         }
-		
-		       // Обработчик событий клавиатуры
+
+        // Обработчик событий клавиатуры
         document.addEventListener('keydown', (event) => {
-            <!-- if (event.ctrlKey) { -->
-                switch (event.key) {
-                    case '1': // Ctrl + 1: убавить у первого
-                        changeScore(1, -1);
-                        break;
-                    case '2': // Ctrl + 2: прибавить у первого
-                        changeScore(1, 1);
-                        break;
-                    case '3': // Ctrl + 3: убавить у второго
-                        changeScore(2, -1);
-                        break;
-                    case '4': // Ctrl + 4: прибавить у второго
-                        changeScore(2, 1);
-                        break;
-                }
-            <!-- } -->
+            switch (event.key) {
+                case '1': // Ctrl + 1: убавить у первого
+                    changeScore(1, -1);
+                    break;
+                case '2': // Ctrl + 2: прибавить у первого
+                    changeScore(1, 1);
+                    break;
+                case '3': // Ctrl + 3: убавить у второго
+                    changeScore(2, -1);
+                    break;
+                case '4': // Ctrl + 4: прибавить у второго
+                    changeScore(2, 1);
+                    break;
+            }
         });
-		
+
 
         // Слушаем изменения в localStorage
         window.addEventListener('storage', (event) => {
