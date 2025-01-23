@@ -1,149 +1,170 @@
 :root {
-    --width: 50vh;
-    --height: 50vh;
+     --width: 50vh;
+     --height: 50vh;
 }
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    margin: 0;
-    background-color: #f0f0f0;
-    background: #0e1433;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-	user-select: none;
-	   cursor: url('gold-dot.svg'), auto; /* Укажите путь к вашему SVG-файлу */
+ @media (orientation: portrait) {
+     :root {
+         --width: 30vw;
+         --height: 30vw;
+    }
 }
-
-.container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    perspective: 2000px;
-    gap: 10vh;
+ body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 90vh;
+     margin: 0;
+     background-color: #f0f0f0;
+     background: #0e1433;
+     flex-direction: column;
+     font-family: Arial, sans-serif;
+     user-select: none;
+     cursor: url('gold-dot.svg'), auto;
+    /* Укажите путь к вашему SVG-файлу */
+}
+ @media (orientation: portrait) {
+     body {
+         height: 100vh;
+    }
+}
+ .container {
+     display: flex;
+     justify-content: center;
+     width: 100%;
+     perspective: 2000px;
+     gap: 10vh;
     /* Увеличенное значение perspective */
 }
-
-.cube-container {
-    text-align: center;
-    margin: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-	    position: relative;
+ @media (orientation: portrait) {
+     .container {
+         gap: 10vw;
+    }
 }
-
-.cube {
-    width: var(--width);
-    height: var(--height);
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1s ease-in-out;
-    border-radius: 10px;
+ .cube-container {
+     text-align: center;
+     margin: 0 20px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+}
+ .cube {
+     width: var(--width);
+     height: var(--height);
+     position: relative;
+     transform-style: preserve-3d;
+     transition: transform 1s ease-in-out;
+     border-radius: 10px;
     /* Закругленные углы */
 }
-
-.face {
-    position: absolute;
-    width: var(--width);
-    height: var(--height);
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #fff;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: calc(var(--width) / 2);
-    font-weight: 900;
+ .face {
+     position: absolute;
+     width: var(--width);
+     height: var(--height);
+     background-color: rgba(0, 0, 0, 0.8);
+     border: 1px solid #fff;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: calc(var(--width) / 2);
+     font-weight: 900;
     /* Размер цифр адаптируется под размер кубика */
-    color: gold;
+     color: gold;
     /* Золотистые цифры */
-    border: calc(var(--width) / 15) solid gold;
+     border: calc(var(--width) / 15) solid gold;
     /* Золотистая обводка */
-    border-radius: calc(var(--width) / 5);
+     border-radius: calc(var(--width) / 5);
     /* Закругленные углы */
-    backface-visibility: hidden;
+     backface-visibility: hidden;
     /* Скрываем задние грани */
-    box-sizing: border-box;
+     box-sizing: border-box;
     /* Учитываем обводку в размерах */
 }
-
-        .controls {
-    position: absolute;
-    bottom: -120px;
-    width: 100%;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-        }
-
-        .controls button {
-
-margin: 5px;
-    padding: 10px;
-    font-size: 16px;
-    flex: 1;
-    /* cursor: pointer; */
-	   cursor: url('gold-dot.svg'), auto; /* Укажите путь к вашему SVG-файлу */
-    opacity: .05;
-    height: 10vh;
-    background: #0e1433;
-
-        }
-
-       .controls button:hover {
-            /* cursor: url('gold-dot-large.svg'), auto; /* Большая золотая точка */ */
-        }
-
-
+ .controls {
+     position: absolute;
+     bottom: -10vw;
+     width: 100%;
+     display: flex ;
+     align-items: center;
+     justify-content: center;
+}
+ @media (orientation: portrait) {
+     .controls {
+         bottom: -10vh;
+    }
+}
+ .controls button {
+     margin: 5px;
+     padding: 10px;
+     font-size: 16px;
+     flex: 1;
+    /* cursor: pointer;
+     */
+     cursor: url('gold-dot.svg'), auto;
+    /* Укажите путь к вашему SVG-файлу */
+     opacity: .05;
+     height: 10vh;
+     background: #0e1433;
+}
+ @media (orientation: portrait) {
+     .controls button {
+         height: 10vw;
+    }
+}
+ .controls button:hover {
+    /* cursor: url('gold-dot-large.svg'), auto;
+    /* Большая золотая точка */
+     */
+}
 /* Левый кубик (Знатоки) */
-#cube1 .face {
-    background: linear-gradient(45deg, #ff007f, #ff66b2);
-    /* background: linear-gradient(45deg, rgb(147, 32, 101), #ff66b2); */
+ #cube1 .face {
+     background: linear-gradient(45deg, #ff007f, #ff66b2);
+    /* background: linear-gradient(45deg, rgb(147, 32, 101), #ff66b2);
+     */
     /* Розовый глянцевый фон */
 }
-
 /* Правый кубик (Телезрители) */
-#cube2 .face {
-    background: linear-gradient(45deg, #000000, #333333);
+ #cube2 .face {
+     background: linear-gradient(45deg, #000000, #333333);
     /* Черный глянцевый фон */
 }
-
-.front {
-    transform: rotateY(0deg) translateZ(calc(var(--width) / 2));
+ .front {
+     transform: rotateY(0deg) translateZ(calc(var(--width) / 2));
 }
-
-.back {
-    transform: rotateY(180deg) translateZ(calc(var(--width) / 2));
+ .back {
+     transform: rotateY(180deg) translateZ(calc(var(--width) / 2));
 }
-
-.right {
-    transform: rotateY(90deg) translateZ(calc(var(--width) / 2));
+ .right {
+     transform: rotateY(90deg) translateZ(calc(var(--width) / 2));
 }
-
-.left {
-    transform: rotateY(-90deg) translateZ(calc(var(--width) / 2));
+ .left {
+     transform: rotateY(-90deg) translateZ(calc(var(--width) / 2));
 }
-
-.top {
-    transform: rotateX(90deg) translateZ(calc(var(--width) / 2));
+ .top {
+     transform: rotateX(90deg) translateZ(calc(var(--width) / 2));
 }
-
-.bottom {
-    transform: rotateX(-90deg) translateZ(calc(var(--width) / 2));
+ .bottom {
+     transform: rotateX(-90deg) translateZ(calc(var(--width) / 2));
 }
-
-h2 {
-    margin-bottom: 20px;
-    font-size: 3vw;
-    font-size: calc(var(--width) / 10);
+ h2 {
+     margin-bottom: 20px;
+     font-size: 3vw;
+     font-size: calc(var(--width) / 10);
     /* Размер надписи адаптируется под размер экрана */
-    color: gold;
+     color: gold;
     /* Золотистый цвет надписей */
-    text-align: center;
+     text-align: center;
+     position: absolute;
+     top: -10vw;
+     left: 50%;
+     transform: translateX(-50%);
 }
+ @media (orientation: portrait) {
+     h2 {
+         font-size: 3vh;
+         top: -10vh;
+    }
+}
+ 

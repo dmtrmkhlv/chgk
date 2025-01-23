@@ -30,6 +30,13 @@
       min-height: 90vh;
       /* overflow: hidden; */
     }
+	
+	 @media (orientation: portrait) {
+     body {
+        flex-direction: row;
+		display: block;
+    }
+	}
 
     label {
       min-width: 250px;
@@ -67,6 +74,15 @@
       justify-content: flex-start;
       /* gap: 38px; */
     }
+	
+		 @media (orientation: portrait) {
+		 .h1{
+		 	flex-direction: column;
+    align-items: flex-start;
+		 }}
+		 }
+	
+
 
     .h1 a {
       display: inline-block;
@@ -130,6 +146,34 @@
     .name-control {
       margin-bottom: 20px;
     }
+	
+	 @media (orientation: portrait){
+	 .wrapper{
+	 display: flex;
+    flex-direction: column;
+    gap: 20px;
+	padding: 1%;
+        box-sizing: border-box;
+	}
+	 .name-control input {
+    min-width: 100%;
+	}
+	 	.name-control, .score-control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.name-control button{
+width: 100%;
+}
+
+
+	 }
+
 
     .name-control input {
       width: 150px;
@@ -142,6 +186,12 @@
     .instruction {
       margin-top: 50px;
     }
+	 @media (orientation: portrait){
+	 	.instruction {
+    margin-top: 0;
+}
+	 }
+
 
     .instruction p {
       font-size: 10px;
@@ -265,12 +315,35 @@
         }
       }
     }
+const name1 = document.getElementById('name1');
+const name2 = document.getElementById('name2');
 
+
+const score1 = document.getElementById('score1');
+const score2 = document.getElementById('score2');
     // Инициализация названий при загрузке
-    document.getElementById('name1').value = localStorage.getItem('name1') || 'Знатоки';
-    document.getElementById('name2').value = localStorage.getItem('name2') || 'Телезрители';
+    name1.value = localStorage.getItem('name1') || 'Знатоки';
+    name2.value = localStorage.getItem('name2') || 'Телезрители';
     document.getElementById('name-1-label').innerHTML = localStorage.getItem('name1') ? localStorage.getItem('name1') + ":" : 'Знатоки:';
     document.getElementById('name-2-label').innerHTML = localStorage.getItem('name2') ? localStorage.getItem('name2') + ":" : 'Телезрители:';
+	
+	    // Обработчик события storage
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'score') {
+			const scores = JSON.parse(event.newValue);
+			console.log(scores)
+			const [newScore1, newScore2] = scores;
+			score1.value =  newScore1;
+                score2.value =  newScore2;
+
+            } 
+            });
+			
+			  // Инициализация при загрузке
+			  
+			 const scores =  JSON.parse(localStorage.getItem('score') || '[0, 0]');
+			 			score1.value =  scores[0];
+                score2.value =  scores[1];
   </script>
 </body>
 
